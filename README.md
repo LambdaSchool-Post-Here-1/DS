@@ -2,6 +2,7 @@
 Data Science repository for Lambda School's PostHere build for classifying the proper Subreddit a post should go in using a Natural Language Processing model.
 
 ## Directory Structure
+```
 ├── README.md  <- You are here! Data Science README file.
 ├── requirements.txt  <- The requirements file for reproducing environment.
 ├── data
@@ -13,3 +14,4 @@ Data Science repository for Lambda School's PostHere build for classifying the p
 └──  modeling
       ├── predict.py <- Makes multi-class classification prediction on which Subreddit to post in.  (TODO)
       └── train_model.py <- Trains our model for use in predict.py  (TODO)
+```
