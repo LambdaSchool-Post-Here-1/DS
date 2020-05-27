@@ -22,6 +22,7 @@ connection = sqlite3.connect(DATABASE_URI)
 
 # Read in dataframe and convert to sqlite table
 df = pd.read_csv(DATAFRAME_URI)
+df = df.dropna()
 df.to_sql('test_db.sqlite3', con=connection, if_exists='replace')
 
 def create_app():
