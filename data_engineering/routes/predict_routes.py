@@ -12,14 +12,20 @@ load_dotenv()
 API_KEY = os.getenv("BASILICA_API_KEY", default='YOU SHALL NOT PASS!')
 
 # Create predict route
-@predict_routes.route('/predict') #, methods=['POST'])
+@predict_routes.route('/predict', methods=['POST']) #, methods=['POST'])
 def predict():
 
-    # Connect to basilica for embedding text
+    # TODO user_input = request.get_json(force=True)
+    # TODO user_text = user_input['text']
+
+    # Connect to basilica for embedding text --  TODO This will be removed prior to deployment
     basilica_connection = Connection(API_KEY)
 
     # Instantiate train_model
     classifier = train_model()
+
+
+    # TODO prediction = classifier.predict([user_text])
 
     example_text = "My macbook labptop keyboard stopped working. What are the best contacts to deal with this issue?"
     example_embedding = basilica_connection.embed_sentence(example_text, model="reddit")
