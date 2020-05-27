@@ -12,6 +12,12 @@ Data Science repository for Lambda School's PostHere build for classifying the p
 │    ├── clean_preprocess.ipynb  <- Cleaning / tokenizing final data for usage in modeling.  (TODO: .py, functional as .ipynb)
 │    └── fetch_data.ipynb  <- Fetches data using Reddit's API for technical support subreddits.  (TODO: .py, functional as .ipynb)
 └──  modeling
-      ├── predict.py <- Makes multi-class classification prediction on which Subreddit to post in.  (TODO)
-      └── train_model.py <- Trains our model for use in predict.py  (TODO)
+│    ├── predict.py <- Makes multi-class classification prediction on which Subreddit to post in.  (TODO)
+│    └── train_model.py <- Trains our model for use in predict.py  (TODO)
+└──data_engineering <- Directory to store data engineering progress 
+     ├── routes <- Create routes to important data pages
+     │      ├── home_routes.py <- Create route to home page
+     │      └── predict_routes.py <- Create route to predict page
+     ├── models.py <- models for database, classes, etc
+     └── __init__.py <- init file...main file where app is created and run
 ```
