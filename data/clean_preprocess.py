@@ -9,8 +9,10 @@ nlp = spacy.load('en_core_web_lg')
 
 # Extending stop words relative to our use case.
 STOP_WORDS = nlp.Defaults.stop_words.union(["doesnt", "wont", "cant", "got",
-                                            "use", "im", "like", "know", "dont",
-                                            "ive"])
+                                            "use", "im", "like", "know",
+                                            "dont", "ive"])
+
+
 def clean_data():
     """Default cleaning function for cleaning data fetched by fetch_data.py
        Cleans & Tokenizes our Text."""
@@ -26,7 +28,7 @@ def clean_data():
 
     # Removes URLs
     url_regex = (r'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]' +
-    r'|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+')
+                 r'|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+')
 
     df['Text'] = df['Text'].apply(lambda x: re.sub(url_regex, '', x))
 
