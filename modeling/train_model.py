@@ -19,8 +19,8 @@ def model():
     # 70/30 Train-Test Split
     train, test = train_test_split(df, train_size=0.7, random_state=42)
 
-    # n_splits warning, fix
-    warnings.simplefilter("ignore", UserWarning)
+    # n_splits warning
+    # warnings.simplefilter("ignore", UserWarning)
 
     X_train = train['Tokens']
     y_train = train['Subreddit']
