@@ -19,8 +19,8 @@ Data Science repository for Lambda School's PostHere build for classifying the p
 │    └── model_selection.ipynb <- Jupyter notebook for model selection.
 └── data_engineering <- Directory to store data engineering progress
      ├── routes <- Create routes to important data pages
-     │      ├── home_routes.py <- Create route to home page
-     │      └── predict_routes.py <- Create route to predict page
+     │    ├── home_routes.py <- Create route to home page
+     │    └── predict_routes.py <- Create route to predict page
      ├── models.py <- models for database, classes, helper methods, etc
      └── __init__.py <- init file...main file where app is created and run
 ```
