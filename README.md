@@ -23,5 +23,7 @@ Data Science repository for Lambda School's PostHere build for classifying the p
 ```
 
 **Contributors:**
-Data Engineer - Daniel Benson
-Machine Learning Engineer - Kenneth T. Barrett
+
+**Data Engineer** - Daniel Benson
+
+**Machine Learning Engineer** - Kenneth T. Barrett
