@@ -4,6 +4,7 @@ There are so many new and emerging tech products on the market, that it wasn't e
 
 ## Contents
 *clean_preprocess.py* - Cleans and preprocesses fetched data, and preprocesses input using same techniques for use in predictions.
+
 *fetch_data.py* - Fetches the top 100 results for reach of the following subreddits:
 ```
 24hoursupport, Android, Applehelp, asktechnology, buildapc, linux4noobs, pcgamingtechsupport, talesfromtechsupport, techsupport
