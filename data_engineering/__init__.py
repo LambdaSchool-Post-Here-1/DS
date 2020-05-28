@@ -9,14 +9,14 @@ import sqlite3
 import os
 
 # File path for database
-DATABASE_URL="sqlite:////Users/Daniel/Desktop/unit_3_buil/DS/data_engineering/test_db.sqlite3"
+DATABASE_URI = "data_engineering/test_db.sqlite3"
 
 # Instantiate sqlalchemy and migrate
 db = SQLAlchemy()
 migrate = Migrate()
 
 # Create connection to database
-connection = sqlite3.connect(DATABASE_URL)
+connection = sqlite3.connect(DATABASE_URI)
 
 # Read in dataframe and convert to sqlite table
 df = pd.read_csv('data/datasets/cleaned_data.csv')
