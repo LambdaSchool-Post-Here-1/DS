@@ -9,7 +9,8 @@ nlp = spacy.load('en_core_web_lg')
 
 # Extending stop words relative to our use case.
 STOP_WORDS = nlp.Defaults.stop_words.union(["doesnt", "wont", "cant", "got",
-                                            "use"])
+                                            "use", "im", "like", "know", "dont",
+                                            "ive"])
 def clean_data():
     """Default cleaning function for cleaning data fetched by fetch_data.py
        Cleans & Tokenizes our Text."""
