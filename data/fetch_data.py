@@ -1,4 +1,4 @@
-"""Fetches top 100 posts from list of tech support subreddits."""
+"""Fetches the top posts for our list of technical support subreddits."""
 
 
 import os
@@ -7,9 +7,8 @@ import praw  # Reddit API wrapper
 from decouple import config
 
 
-def fetch(num_posts=100):
-    """Fetches the top posts for our list of technical support subreddits.
-        `num_posts` (Default=100) # of posts to fetch from each subreddit."""
+def fetch(num_posts=200):
+    """`num_posts` (Default = 200) # of posts to fetch from each subreddit."""
 
     # Make connection to Reddit API
     r = praw.Reddit(client_id=config('CLIENT_ID'),
@@ -26,9 +25,7 @@ def fetch(num_posts=100):
     # Making a dataframe with the columns we'll be using.
     df = pd.DataFrame(columns=['Subreddit', 'Text'])
 
-    # Populates dataframe created above.
-
-    # HOT
+    # Sort By: HOT
     for sr in subreddits:
         subreddit = r.subreddit(sr)
         for submission in subreddit.hot(limit=num_posts):
@@ -37,7 +34,7 @@ def fetch(num_posts=100):
                 df = df.append({'Subreddit': subreddit.display_name,
                                 'Text': post.selftext}, ignore_index=True)
 
-    # TOP
+    # Sort By: TOP
     for sr in subreddits:
         subreddit = r.subreddit(sr)
         for submission in subreddit.top(limit=num_posts):
@@ -49,3 +46,5 @@ def fetch(num_posts=100):
     df = df.dropna()  # Drop any NaN values before sending to CSV.
 
     df.to_csv('datasets/fetched_data.csv', index=False)  # Sending to CSV
+
+    return df
