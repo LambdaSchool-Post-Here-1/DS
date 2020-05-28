@@ -8,7 +8,7 @@ from sklearn.model_selection import GridSearchCV, train_test_split
 from sklearn.pipeline import Pipeline
 import warnings
 
-df = pd.read_csv('../data/datasets/cleaned_data.csv')
+df = pd.read_csv('data/datasets/cleaned_data.csv')
 
 
 class model():
