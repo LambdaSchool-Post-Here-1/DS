@@ -39,7 +39,7 @@ def clean_data():
     tokens = []  # Empty list to populate with our tokens.
 
     for text in df['Text']:
-        list_of_tokens = text.split()
+        list_of_tokens = re.split(r'[/\s]', text)
         # Remove punctuation
         table = str.maketrans('', '', string.punctuation)
         list_of_tokens = [t.translate(table) for t in list_of_tokens]
@@ -55,7 +55,7 @@ def clean_data():
     df = df.dropna()  # Drop NaN values.
 
     df.to_csv('datasets/cleaned_data.csv', index=False)
-    return df
+    return
 
 
 def tokenize(text_to_tokenize):
