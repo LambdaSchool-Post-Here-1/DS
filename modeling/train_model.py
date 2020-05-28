@@ -80,3 +80,5 @@ def model():
     filename = 'finalized_model.sav'
     pickle.dump(model, open(filename, 'wb'))
 
+if __name__ == "__main__":
+    model()
