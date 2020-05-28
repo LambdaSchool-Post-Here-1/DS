@@ -8,8 +8,8 @@ import string
 nlp = spacy.load('en_core_web_lg')
 
 # Extending stop words relative to our use case.
-STOP_WORDS = nlp.Defaults.stop_words.union(["doesnt", "wont", "cant", "got"])
-
+STOP_WORDS = nlp.Defaults.stop_words.union(["doesnt", "wont", "cant", "got",
+                                            "use"])
 def clean_data():
     """Default cleaning function for cleaning data fetched by fetch_data.py
        Cleans & Tokenizes our Text."""
@@ -57,6 +57,7 @@ def clean_data():
 
 def tokenize(text_to_tokenize):
     """Tokenizes text for usage in predictions"""
+
     punct = string.punctuation
     tokens = []  # Empty list to populate with our tokens.
     list_of_tokens = text_to_tokenize.split()
