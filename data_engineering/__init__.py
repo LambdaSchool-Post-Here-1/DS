@@ -7,7 +7,10 @@ from data_engineering.routes.predict_routes import predict_routes
 import pandas as pd
 import sqlite3
 import os
-from dotenv import load_dotenv
+try:
+    from dotenv import load_dotenv
+except:
+    pass
 
 try:
     load_dotenv()
