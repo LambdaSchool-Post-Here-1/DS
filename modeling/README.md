@@ -3,4 +3,8 @@ This is a multi-class classification NLP model made to predict the correct subre
 
 ## Contents:
 *predict.py* - Preprocesses / Tokenizes user input and makes prediction based upon trained model.
+
 *train_model.py* - Tunes parameters for new data fetches, and trains model for use in making predictions.
+
+**Contributors:**
+Kenneth T. Barrett
