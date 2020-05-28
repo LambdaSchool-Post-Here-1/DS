@@ -7,8 +7,8 @@ Data Science repository for Lambda School's PostHere build for classifying the p
 ├── requirements.txt  <- The requirements file for reproducing environment.
 ├── data <- Data collection, cleaning, preprocessing, CSV files.
 │    ├── datasets          <- CSV files of Fetched / Cleaned Data
-│    │     ├── cleaned_data.csv <- CSV output of clean_preprocess.py
-│    │     └── fetched_data.csv <- CSV output of fetch_data.py
+│    │    ├── cleaned_data.csv <- CSV output of clean_preprocess.py
+│    │    └── fetched_data.csv <- CSV output of fetch_data.py
 │    ├── clean_preprocess.py  <- Cleaning / tokenizing final data for usage in modeling.
 │    └── fetch_data.py  <- Fetches data using Reddit's API for technical support subreddits.
 ├── modeling <- Directory containing files for training / prediction (our model)
