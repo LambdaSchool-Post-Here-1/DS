@@ -4,10 +4,10 @@ import pandas as pd
 import re
 import spacy
 import string
-import en_core_web_md
+from en_core_web_sm_2_2_5 import en_core_web_sm
 
 # spacy.load('en_core_web_md')
-nlp = en_core_web_md.load()
+nlp = en_core_web_sm.load()
 
 # Extending stop words relative to our use case.
 STOP_WORDS = nlp.Defaults.stop_words.union(["doesnt", "wont", "cant", "got",
