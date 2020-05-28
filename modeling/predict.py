@@ -1,11 +1,15 @@
 """Makes predictions using trained model."""
 
-from train_model import model
-from data.clean_preprocess import tokenize
+
+import imp
+import pickle
 
 
-model = model()
+tokenize = imp.load_source('tokenize', '../data/clean_preprocess.py')
 
+# Load in pickled model.
+filename = 'finalized_model.sav'
+model = pickle.load(open(filename, 'rb'))
 
 def make_prediction(user_input):
     """Tokenizes texts using custom tokenizer, and makes predictions based upon
