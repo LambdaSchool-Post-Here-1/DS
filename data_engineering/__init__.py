@@ -27,15 +27,15 @@ migrate = Migrate()
 connection = sqlite3.connect(DATABASE_URL)
 
 # Read in dataframe and convert to sqlite table
-df = pd.read_csv('data/datasets/cleaned_data.csv')
-df = df.dropna()
-df = df.drop(columns='Text')
-df.to_sql('test_db.sqlite3', con=connection, if_exists='replace')
+# df = pd.read_csv('data/datasets/cleaned_data.csv')
+# df = df.dropna()
+# df = df.drop(columns='Text')
+# df.to_sql('test_db.sqlite3', con=connection, if_exists='replace')
 
 def create_app():
     app = Flask(__name__)
-    app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    # app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
+    # app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.init_app(app)
     migrate.init_app(app, db)
 
