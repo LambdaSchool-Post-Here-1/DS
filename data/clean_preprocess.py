@@ -4,7 +4,7 @@ import pandas as pd
 import re
 import spacy
 import string
-from en_core_web_sm_2_2_5 import en_core_web_sm
+from .en_core_web_sm_2_2_5 import en_core_web_sm
 
 # spacy.load('en_core_web_md')
 nlp = en_core_web_sm.load()
