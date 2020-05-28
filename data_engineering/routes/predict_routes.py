@@ -1,5 +1,4 @@
 from flask import Blueprint, render_template, jsonify
-from dotenv import load_dotenv
 import os
 
 predict_routes = Blueprint("predict_routes", __name__)
