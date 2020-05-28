@@ -46,3 +46,5 @@ def fetch(num_posts=200):
     df = df.dropna()  # Drop any NaN values before sending to CSV.
 
     df.to_csv('datasets/fetched_data.csv', index=False)  # Sending to CSV
+
+    return df
