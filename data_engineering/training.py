@@ -1,3 +1,10 @@
+"""
+
+Baseline training file used in app production
+
+        -----Obsolete----
+
+
 import os
 import sqlite3
 from sklearn.linear_model import LogisticRegression
@@ -22,12 +29,12 @@ def train_model():
     sqlite_cursor = sqlite_connection.cursor()
 
     # SQL commands to select all and delete null
-    select_data = """
+    select_data = 
                 SELECT 
                     *
                 FROM
                     "test_db.sqlite3";
-                """
+                
 
     # print(data)
 
@@ -55,3 +62,5 @@ def train_model():
     classifier.fit(text_embeddings, subreddits)
 
     return classifier
+
+"""
