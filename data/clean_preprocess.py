@@ -10,12 +10,13 @@ nlp = spacy.load('en_core_web_lg')
 tokenizer = Tokenizer(nlp.vocab)
 
 # Extending stop words relative to our use case.
-STOP_WORDS = nlp.Defaults.stop_words.union(["doesnt", "wont", "cant"])
+STOP_WORDS = nlp.Defaults.stop_words.union(["doesnt", "wont", "cant", "got"])
 
 def clean_data():
     """Default cleaning function for cleaning data fetched by fetch_data.py
        Cleans & Tokenizes our Text."""
 
+    punct = string.punctuation
     df = pd.read_csv('datasets/fetched_data.csv')
 
     # Replace linebreaks with whitespace
@@ -33,21 +34,25 @@ def clean_data():
     # Removes anything in brackets (generally irrelevant)
     df['Text'] = df['Text'].apply(lambda x: re.sub(r'\[.*?\]', '', x))
 
+    # Tokenizing
     tokens = []  # Empty list to populate with our tokens.
 
-    for doc in tokenizer.pipe(df['Text'].astype('unicode')):
+    for text in df['Text']:
+        list_of_tokens = text.split()
+        # Remove punctuation
+        table = str.maketrans('', '', string.punctuation)
+        list_of_tokens = [t.translate(table) for t in list_of_tokens]
 
         doc_tokens = []
-
-        for token in doc:
-            if ((token.text.lower() not in STOP_WORDS) &
-            (token.is_punct==False)):
-                doc_tokens.append(token.text.lower())
+        for token in list_of_tokens:
+            if (token.lower() not in STOP_WORDS) & (token not in punct):
+                doc_tokens.append(token.lower())
         tokens.append(doc_tokens)
-
     df['Tokens'] = tokens
 
-    df = df.drop(columns='Text')
+    df = df.drop(columns='Text')  # Drop text column.
+    df = df.dropna()  # Drop NaN values.
+
     df.to_csv('datasets/cleaned_data.csv', index=False)
     return df
 
@@ -55,10 +60,13 @@ def clean_data():
 def tokenize(text_to_tokenize):
     """Tokenizes text for usage in predictions"""
     punct = string.punctuation
-    text_to_tokenize = text_to_tokenize.astype('unicode')
     tokens = []  # Empty list to populate with our tokens.
     list_of_tokens = text_to_tokenize.split()
+    # Remove punctuation
+    table = str.maketrans('', '', string.punctuation)
+    list_of_tokens = [t.translate(table) for t in list_of_tokens]
+
     for token in list_of_tokens:
         if (token.lower() not in STOP_WORDS) & (token not in punct):
-            tokens.append(token)
+            tokens.append(token.lower())
     return tokens
