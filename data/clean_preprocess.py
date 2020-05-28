@@ -3,11 +3,9 @@
 import pandas as pd
 import re
 import spacy
-from spacy.tokenizer import Tokenizer
 import string
 
 nlp = spacy.load('en_core_web_lg')
-tokenizer = Tokenizer(nlp.vocab)
 
 # Extending stop words relative to our use case.
 STOP_WORDS = nlp.Defaults.stop_words.union(["doesnt", "wont", "cant", "got"])
