@@ -18,6 +18,7 @@ basilica = "*"
 gunicorn = "*"
 psycopg2-binary = "*"
 dotenv = "*"
+sklearn = "*"
 
 [requires]
 python_version = "3.6"

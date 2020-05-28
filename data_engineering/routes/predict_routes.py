@@ -1,17 +1,24 @@
-from flask import Blueprint, render_template, jsonify
+from flask import Blueprint, render_template, jsonify, request
 import os
+from data.clean_preprocess import tokenize
+import pickle
+
 
 predict_routes = Blueprint("predict_routes", __name__)
 
-
 # Create predict route
-@predict_routes.route('/predict') # methods=['POST']
+@predict_routes.route('/predict', methods=['POST'])
 def predict():
 
-    # Instantiate train_model
-    # classifier = train_model()
+    # Load the Model back from file
+    with open('finalized_model.sav', 'rb') as file:  
+        pickled_ml_model = pickle.load(file)
 
-    # TODO prediction = classifier.predict([user_text])
+    user_input = request.get_json(force=True)
+    user_text = user_input['text']
 
-    return jsonify("We all live in a yellow submarine...") # Return basic jsonified string to ensure things are working
+    tokenized_text = tokenize(user_text)
+    prediction = pickled_ml_model.predict(tokenized_text)
 
+
+    return jsonify(prediction[0]) # Return basic jsonified string to ensure things are working

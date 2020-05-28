@@ -8,7 +8,7 @@ from sklearn.model_selection import RandomizedSearchCV, train_test_split
 from sklearn.pipeline import Pipeline
 import pickle
 
-df = pd.read_csv('../data/datasets/cleaned_data.csv')
+df = pd.read_csv('data/datasets/cleaned_data.csv')
 
 def model():
     """Tunes our parameters  to update model for new data fetches as
@@ -79,3 +79,4 @@ def model():
 
     filename = 'finalized_model.sav'
     pickle.dump(model, open(filename, 'wb'))
+
