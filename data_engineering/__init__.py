@@ -2,8 +2,8 @@
 from flask import Flask, Blueprint
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-from routes.home_routes import home_routes
-from routes.predict_routes import predict_routes
+from data_engineering.routes.home_routes import home_routes
+from data_engineering.routes.predict_routes import predict_routes
 import pandas as pd
 import sqlite3
 import os
