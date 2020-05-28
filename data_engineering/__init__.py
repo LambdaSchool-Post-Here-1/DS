@@ -7,16 +7,19 @@ from data_engineering.routes.predict_routes import predict_routes
 import pandas as pd
 import sqlite3
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # File path for database
-DATABASE_URI = "data_engineering/test_db.sqlite3"
+DATABASE_URL = os.getenv("DATABASE_URL")
 
 # Instantiate sqlalchemy and migrate
 db = SQLAlchemy()
 migrate = Migrate()
 
 # Create connection to database
-connection = sqlite3.connect(DATABASE_URI)
+connection = sqlite3.connect(DATABASE_URL)
 
 # Read in dataframe and convert to sqlite table
 df = pd.read_csv('data/datasets/cleaned_data.csv')
@@ -26,7 +29,7 @@ df.to_sql('test_db.sqlite3', con=connection, if_exists='replace')
 
 def create_app():
     app = Flask(__name__)
-    app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URI
+    app.config['SQLALCHEMY_DATABASE_URL'] = DATABASE_URL
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.init_app(app)
     migrate.init_app(app, db)
