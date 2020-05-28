@@ -35,7 +35,7 @@ def clean_data():
 
     tokens = []  # Empty list to populate with our tokens.
 
-    for doc in tokenizer.pipe(dataframe['Text'].astype('unicode')):
+    for doc in tokenizer.pipe(df['Text'].astype('unicode')):
 
         doc_tokens = []
 
@@ -49,12 +49,13 @@ def clean_data():
 
     df = df.drop(columns='Text')
     df.to_csv('datasets/cleaned_data.csv', index=False)
-
+    return df
 
 
 def tokenize(text_to_tokenize):
     """Tokenizes text for usage in predictions"""
     punct = string.punctuation
+    text_to_tokenize = text_to_tokenize.astype('unicode')
     tokens = []  # Empty list to populate with our tokens.
     list_of_tokens = text_to_tokenize.split()
     for token in list_of_tokens:
