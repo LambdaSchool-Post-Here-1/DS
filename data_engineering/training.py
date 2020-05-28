@@ -2,12 +2,11 @@
 
 Baseline training file used in app production
 
-"""
+
 
 
 import os
 import sqlite3
-import sklearn
 from sklearn.linear_model import LogisticRegression
 from basilica import Connection
 import psycopg2
@@ -36,12 +35,12 @@ def train_model():
     
 
     # SQL commands to select all and delete null
-    select_data = """
+    select_data = 
                 SELECT 
                     *
                 FROM
                     "postgresql-shallow-75985";
-                """
+                
     # breakpoint()
     # print(data)
 
@@ -75,3 +74,5 @@ def train_model():
 if __name__ == "__main__":
     classifier = train_model()
     # breakpoint()
+
+    """

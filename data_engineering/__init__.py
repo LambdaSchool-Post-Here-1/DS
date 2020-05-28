@@ -29,7 +29,7 @@ migrate = Migrate()
 # Read in dataframe and convert to sqlite table
 df = pd.read_csv('data/datasets/cleaned_data.csv')
 df = df.dropna()
-df = df.drop(columns='Text')
+df = df.drop(columns='Tokens')
 df.to_sql('postgresql-shallow-75985', con=myeng, if_exists='replace')
 
 def create_app():

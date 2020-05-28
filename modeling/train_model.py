@@ -79,3 +79,4 @@ def model():
 
     filename = 'finalized_model.sav'
     pickle.dump(model, open(filename, 'wb'))
+

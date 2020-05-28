@@ -1,33 +1,43 @@
-from flask import Blueprint, render_template, jsonify
-from basilica import Connection
-from data_engineering.training import train_model
+from flask import Blueprint, render_template, jsonify, request
 import os
+from data.clean_preprocess import tokenize
+import pickle
+
 
 predict_routes = Blueprint("predict_routes", __name__)
 
-# Load in basilica api key from .env
-API_KEY = "d3c5e936-18b0-3aac-8a2c-bf95511eaaa5"
-
 # Create predict route
-@predict_routes.route('/predict') #, methods=['POST'])
+@predict_routes.route('/predict', methods=['POST'])
 def predict():
 
-    # TODO user_input = request.get_json(force=True)
-    # TODO user_text = user_input['text']
+    # Load the Model back from file
+    with open('finalized_model.sav', 'rb') as file:  
+        pickled_ml_model = pickle.load(file)
 
-    # Connect to basilica for embedding text --  TODO This will be removed prior to deployment
-    basilica_connection = Connection(API_KEY)
+    user_input = request.get_json(force=True)
+    user_text = user_input['text']
 
-    # Instantiate train_model
-    classifier = train_model()
-    
-
-
-    # TODO prediction = classifier.predict([user_text])
-
-    example_text = "My macbook labptop keyboard stopped working. What are the best contacts to deal with this issue?"
-    example_embedding = basilica_connection.embed_sentence(example_text, model="reddit")
-    prediction = classifier.predict([example_embedding])
+    tokenized_text = tokenize(user_text)
+    prediction = pickled_ml_model.predict(tokenized_text)
 
 
     return jsonify(prediction[0]) # Return basic jsonified string to ensure things are working
+
+    # def predict(): #define a prediction function
+    #     # Get input text from request body
+    #     body = request.get_json(force=True)
+    #     text = body['text']
+    #     # Run through model
+    #     knnPickle = 'api/modelknn_pkl.sav'
+    #     model, index_df, tfidf = pickle.load(open(knnPickle, 'rb'))
+    #     dist, indices = model.kneighbors(tfidf.transform([text]).todense())
+    #     recommended_subreddits = [index_df.iloc[n]['subreddit'] for n in indices[0]]
+    #     resp = {
+    #         'subreddits': uniq(recommended_subreddits)[:3]
+    #     }
+    #     # give output to sender.
+    #     return APP.response_class(
+    #         response=json.dumps(resp),
+    #         status=200,
+    #         mimetype='application/json'
+    #     ) (edited) 
