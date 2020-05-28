@@ -7,6 +7,7 @@ Baseline training file used in app production
 
 import os
 import sqlite3
+import sklearn
 from sklearn.linear_model import LogisticRegression
 from basilica import Connection
 import psycopg2
