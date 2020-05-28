@@ -4,18 +4,15 @@
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.model_selection import GridSearchCV, train_test_split
+from sklearn.model_selection import RandomizedSearchCV, train_test_split
 from sklearn.pipeline import Pipeline
+import pickle
 
 df = pd.read_csv('../data/datasets/cleaned_data.csv')
 
-
 def model():
     """Tunes our parameters  to update model for new data fetches as
-       trends change in devices and such, builds model based upon training,
-       fits it, and returns the model."""
-
-    # 70/30 Train-Test Split
+    trends change in devices and such."""
     train, test = train_test_split(df, train_size=0.7, random_state=42)
 
     X_train = train['Tokens']
@@ -39,7 +36,9 @@ def model():
                   'vect__norm': ['l1', 'l2']
                   }
 
-    search = GridSearchCV(pipe, parameters, cv=5, n_jobs=-1, verbose=False)
+    search = RandomizedSearchCV(pipe, parameters,
+                                n_iter=15, cv=5, n_jobs=-1, verbose=False)
+
     results = search.fit(X_train, y_train)
 
     # Best parameters from this run.
@@ -47,7 +46,7 @@ def model():
     vect__analyzer = results.best_params_['vect__analyzer']
     vect__norm = results.best_params_['vect__norm']
 
-    # Run 2 - Tune Classification model
+     # Run 2 - Tune Classification model
     parameters = {
                   'vect__analyzer': [vect__analyzer],
                   'vect__ngram_range': [vect__ngram_range],
@@ -58,7 +57,9 @@ def model():
                   'clf__oob_score': [True, False]
                  }
 
-    search = GridSearchCV(pipe, parameters, cv=5, n_jobs=-1, verbose=False)
+    search = RandomizedSearchCV(pipe, parameters,
+                                n_iter=15, cv=5, n_jobs=-1, verbose=False)
+
     results = search.fit(X_train, y_train)
 
     params = results.best_params_
@@ -76,4 +77,5 @@ def model():
     model = Pipeline([('vect', vect), ('clf', rfc)])
     model.fit(df['Tokens'], df['Subreddit'])
 
-    return model
+    filename = 'finalized_model.sav'
+    pickle.dump(model, open(filename, 'wb'))
