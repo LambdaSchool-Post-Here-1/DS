@@ -2,26 +2,26 @@
 from flask import Flask, Blueprint
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-from data_engineering.routes.home_routes import home_routes
-from data_engineering.routes.predict_routes import predict_routes
+from routes.home_routes import home_routes
+from routes.predict_routes import predict_routes
 import pandas as pd
 import sqlite3
 import os
 
 # File path for database
-DATABASE_URI = os.path.join(os.path.dirname(__file__), "test_db.sqlite3") # "sqlite:///DS/data_engineering/test_db.sqlite3"
+DATABASE_URL="sqlite:////Users/Daniel/Desktop/unit_3_buil/DS/data_engineering/test_db.sqlite3"
 
 # Instantiate sqlalchemy and migrate
 db = SQLAlchemy()
 migrate = Migrate()
 
 # Create connection to database
-connection = sqlite3.connect(DATABASE_URI)
+connection = sqlite3.connect(DATABASE_URL)
 
 # Read in dataframe and convert to sqlite table
 df = pd.read_csv('data/datasets/cleaned_data.csv')
-df.dropna()
-df.drop(columns='Text')
+df = df.dropna()
+df = df.drop(columns='Text')
 df.to_sql('test_db.sqlite3', con=connection, if_exists='replace')
 
 def create_app():
