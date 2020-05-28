@@ -7,9 +7,9 @@ import praw  # Reddit API wrapper
 from decouple import config
 
 
-def fetch(num_posts=100):
+def fetch(num_posts=250):
     """Fetches the top posts for our list of technical support subreddits.
-        `num_posts` (Default=100) # of posts to fetch from each subreddit."""
+       `num_posts` (Default = 250) # of posts to fetch from each subreddit."""
 
     # Make connection to Reddit API
     r = praw.Reddit(client_id=config('CLIENT_ID'),
