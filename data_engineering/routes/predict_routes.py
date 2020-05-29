@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, jsonify, request
 import os
 from data.clean_preprocess import tokenize
 import pickle
-
+import sklearn
 
 predict_routes = Blueprint("predict_routes", __name__)
 
