@@ -58,6 +58,7 @@ colorama==0.4.1
 Flask==1.1.1
 flask_sqlalchemy
 flask_migrate
+flask_cors
 # future==0.17.1
 # gevent==1.4.0
 # glob2==0.7
