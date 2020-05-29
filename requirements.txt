@@ -200,6 +200,7 @@ scipy==1.4.1
 # sortedcollections==1.1.2
 # sortedcontainers==2.1.0
 # soupsieve==1.8
+spacy
 # Sphinx==2.1.2
 # sphinxcontrib-applehelp==1.0.1
 # sphinxcontrib-devhelp==1.0.1
