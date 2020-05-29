@@ -4,16 +4,16 @@ Data Science repository for Lambda School's PostHere build for classifying the p
 ## Directory Structure
 ```
 ├── README.md  <- You are here! Data Science README file.
-├── requirements.txt  <- The requirements file for reproducing environment.
+├── requirements.txt  <- The requirements file for reproducing environment.-->TODO<--
 ├── data <- Data collection, cleaning, preprocessing, CSV files.
-│    ├── datasets          <- CSV files of Fetched / Cleaned Data
-│    │    ├── cleaned_data.csv <- CSV output of clean_preprocess.py
-│    │    └── fetched_data.csv <- CSV output of fetch_data.py
-│    ├── clean_preprocess.py  <- Cleaning / tokenizing final data for usage in modeling.
+│    ├── datasets <- CSV files of Fetched / Cleaned Data
+│    │    ├── cleaned_data.csv <- CSV output of clean_preprocess.py - cleans and Tokenizes text.
+│    │    └── fetched_data.csv <- CSV output of fetch_data.py - raw fetched data.
+│    ├── clean_preprocess.py <- Cleaning / tokenizing final data for usage in modeling.
 │    └── fetch_data.py  <- Fetches data using Reddit's API for technical support subreddits.
 ├── modeling <- Directory containing files for training / prediction (our model)
-│    ├── predict.py <- Makes multi-class classification prediction on which Subreddit to post in. (TODO: Connect to model)
-│    └── train_model.py <- Trains our model for use in predict.py  (TODO: Finish OOP)
+│    ├── predict.py <- Makes multi-class classification prediction on which Subreddit to post in
+│    └── train_model.py <- Trains our model for use in predict.py
 ├── notebooks
 │    ├── data_exploration.ipynb <- Jupyter notebook for data exploration.
 │    └── model_selection.ipynb <- Jupyter notebook for model selection.
@@ -24,6 +24,21 @@ Data Science repository for Lambda School's PostHere build for classifying the p
      ├── models.py <- models for database, classes, helper methods, etc
      └── __init__.py <- init file...main file where app is created and run
 ```
+
+## Challenges Faced this Build Week:
+
+### Machine Learning Engineering:
+Considering the list of Subreddits we were trying to classify, the model performs well. Two of the subreddits were extremely similar in nature:
+- `/r/24hoursupport`
+- `/r/techsupport`
+
+Furthermore, there are a lot of topics that can be somewhat related, such as can potentially be seen in...
+- `/r/buildapc`
+- `/r/pcgamingtechsupport`
+
+... such as in different computer components. For a project such as this in such a short time period, more than anything, I'd like to see survey results on how well the model classified the post to a subreddit that could be expected.
+
+In an attempt to overcome this, I did some decent parameter tuning on several models for model selection. I ultimately ended up using a TF-IDF Vectorizer / Random Forest Classifier model, accompanied by a custom tokenization function, to build this model.
 
 **Contributors:**
 
