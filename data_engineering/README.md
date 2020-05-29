@@ -10,7 +10,7 @@ Data Engineering is the connection between the data behind a program and the fro
     *home_routes.py* : Sets home page and ensures app is working    correctly.
 
     *predict_routes.py* : Takes in user input front front end, converts it to a useable form, runs it through a pretrained prediction model, and outputs the prediction in json format using a /predict endpoint. 
-```
+
 
 **Contributors:**
 Daniel Benson
