@@ -8,4 +8,4 @@ def index():
     
     return "HAKUNA MATADA!!!" # Return basic string to ensure things are working
 
-    # return render_template() --- To connect to frontend?
+    
