@@ -2,6 +2,7 @@
 
 
 import pandas as pd
+import sklearn
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.model_selection import RandomizedSearchCV, train_test_split
@@ -80,3 +81,5 @@ def model():
     filename = 'finalized_model.sav'
     pickle.dump(model, open(filename, 'wb'))
 
+if __name__ == "__main__":
+    model()

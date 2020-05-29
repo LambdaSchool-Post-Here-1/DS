@@ -42,6 +42,11 @@ Furthermore, there are a lot of topics that can be somewhat related, such as can
 
 In an attempt to overcome this, I did some decent parameter tuning on several models for model selection. I ultimately ended up using a TF-IDF Vectorizer / Random Forest Classifier model, accompanied by a custom tokenization function, to build this model.
 
+### Data Engineering:
+The data engineering skeleton came together nicely and within a local environment the connection between the machhine learning model and the data engineering code flowed nicely, however in the deployment process a number of errors occurred with package issues. Overcoming this issue took significant time, research, and a sequential experimental approach that ultimately led to the end product.
+
+Upon deployment we ran into a CORS policy issue that didn't allow the frontend/backend code to connect to my code. After doing some more research I was able to modify my code to allow access and get our program running as it should.
+
 **Contributors:**
 
 **Data Engineer** - Daniel Benson
