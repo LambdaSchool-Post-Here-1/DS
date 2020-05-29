@@ -5,7 +5,7 @@ import imp
 import pickle
 
 
-tokenize = imp.load_source('tokenize', '../data/clean_preprocess.py')
+tokenize = imp.load_source('tokenize', './data/clean_preprocess.py')
 
 # Load in pickled model.
 filename = 'finalized_model.sav'

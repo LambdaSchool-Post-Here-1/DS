@@ -11,14 +11,13 @@ predict_routes = Blueprint("predict_routes", __name__)
 def predict():
 
     # Load the Model back from file
-    with open('finalized_model.sav', 'rb') as file:  
-        pickled_ml_model = pickle.load(file)
-
+    ml_pickle = 'finalized_model.sav'
+    model = pickle.load(open(ml_pickle, 'rb'))
     user_input = request.get_json(force=True)
     user_text = user_input['text']
 
     tokenized_text = tokenize(user_text)
-    prediction = pickled_ml_model.predict(tokenized_text)
+    prediction = model.predict(tokenized_text)
 
 
     return jsonify(prediction[0]) # Return basic jsonified string to ensure things are working
