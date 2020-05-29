@@ -104,8 +104,8 @@ mglearn==0.1.7
 missingno==0.4.2
 mistune==0.8.4
 # mkl-fft==1.0.12
-mkl-random==1.0.2
-mkl-service==2.0.2
+# mkl-random==1.0.2
+# mkl-service==2.0.2
 mock==3.0.5
 more-itertools==7.0.0
 mpmath==1.1.0
