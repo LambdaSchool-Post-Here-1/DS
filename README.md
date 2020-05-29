@@ -1,6 +1,8 @@
 # DS
 Data Science repository for Lambda School's PostHere build for classifying the proper technical support Subreddit a post should go in using a Natural Language Processing model. Our goal was to create a NLP model to classify the proper Subreddit a post should go into in under the span of a week. We worked cross-collaboratively with peers from other career tracks to complete this project.
 
+
+[Model Deployed Here](https://front-end-six-bay.now.sh/)
 ## Directory Structure
 ```
 ├── README.md  <- You are here! Data Science README file.
