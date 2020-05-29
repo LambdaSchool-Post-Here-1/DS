@@ -7,6 +7,8 @@ import sklearn
 predict_routes = Blueprint("predict_routes", __name__)
 
 # Create predict route
+
+
 @predict_routes.route('/predict', methods=['POST'])
 def predict():
 
@@ -18,6 +20,4 @@ def predict():
 
     tokenized_text = tokenize(user_text)
     prediction = model.predict(tokenized_text)
-
-
-    return jsonify(prediction[0]) # Return basic jsonified string to ensure things are working
+    return jsonify(prediction[0])  # Return jsonified prediction

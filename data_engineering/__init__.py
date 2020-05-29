@@ -16,12 +16,9 @@ def create_app():
     CORS(app)
     app.register_blueprint(home_routes)
     app.register_blueprint(predict_routes)
-    
+
     return app
 
 if __name__ == "__main__":
     my_app = create_app()
     my_app.run(debug=True)
-
-    
-
