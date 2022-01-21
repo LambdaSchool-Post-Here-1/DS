@@ -35,7 +35,7 @@ flask_migrate
 flask_cors
 gunicorn
 ipykernel==5.1.1
-ipython==7.6.1
+ipython==7.16.3
 ipython-genutils==0.2.0
 Jinja2==2.11.2
 json5==0.8.4
